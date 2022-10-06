@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewAPI", "ReviewAPI\ReviewAPI.csproj", "{8ACFC833-B88C-43C6-8D2A-6B437CAC1DC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ACFC833-B88C-43C6-8D2A-6B437CAC1DC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACFC833-B88C-43C6-8D2A-6B437CAC1DC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ACFC833-B88C-43C6-8D2A-6B437CAC1DC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ACFC833-B88C-43C6-8D2A-6B437CAC1DC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D6B9FEB-7DF3-410F-A3E6-7A831C1F0FD2}
+	EndGlobalSection
+EndGlobal
