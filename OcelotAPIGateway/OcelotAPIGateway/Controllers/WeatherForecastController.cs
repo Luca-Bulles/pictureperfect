@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OcelotAPIGateway.Controllers
 {
+    //Example Controller
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
