@@ -11,12 +11,15 @@ namespace ContentAPI.Repositories
         {
             _context = context;
         }
-        Task<List<Content>> IContentRepository.AddContent(Content content)
+        async Task<List<Content>> IContentRepository.AddContent(Content content)
         {
-            throw new NotImplementedException();
+            _context.Contents.Add(content);
+            await _context.SaveChangesAsync();
+
+            return await _context.Contents.ToListAsync();
         }
 
-        Task<List<Content>> IContentRepository.DeleteContent(int id)
+        async Task<List<Content>> IContentRepository.DeleteContent(int id)
         {
             throw new NotImplementedException();
         }
@@ -37,7 +40,7 @@ namespace ContentAPI.Repositories
             return null;
         }
 
-        Task<List<Content>> IContentRepository.UpdateContent(Content request)
+        async Task<List<Content>> IContentRepository.UpdateContent(Content request)
         {
             throw new NotImplementedException();
         }

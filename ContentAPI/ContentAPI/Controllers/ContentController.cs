@@ -41,14 +41,15 @@ namespace ContentAPI.Controllers
             return Ok(await _contentRepository.GetContentById(id));
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult<List<Content>>> PostContent(Content content)
-        //{
-        //    _context.Contents.Add(content);
-        //    await _context.SaveChangesAsync();
+        [HttpPost]
+        public async Task<ActionResult<List<Content>>> PostContent(Content content)
+        {
+            //_context.Contents.Add(content);
+            //await _context.SaveChangesAsync();
 
-        //    return Ok(await _context.Contents.ToListAsync());
-        //}
+            //return Ok(await _context.Contents.ToListAsync());
+            return Ok(await _contentRepository.AddContent(content));
+        }
 
         //[HttpPut]
         //public async Task<ActionResult<List<Content>>> UpdateContent(Content request)
