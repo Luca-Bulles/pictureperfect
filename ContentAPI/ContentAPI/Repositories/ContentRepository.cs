@@ -27,9 +27,14 @@ namespace ContentAPI.Repositories
 
         }
 
-        Task<Content> IContentRepository.GetContentById(int id)
+        async Task<Content> IContentRepository.GetContentById(int id)
         {
-            throw new NotImplementedException();
+            var content = await _context.Contents.FindAsync(id);
+            if (content != null)
+            {
+                return content;
+            }
+            return null;
         }
 
         Task<List<Content>> IContentRepository.UpdateContent(Content request)

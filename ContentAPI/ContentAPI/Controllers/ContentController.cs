@@ -29,16 +29,17 @@ namespace ContentAPI.Controllers
             return Ok(await _contentRepository.GetAllContent());
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Content>> GetContentById(int id)
-        //{
-        //    var content = await _context.Contents.FindAsync(id);
-        //    if (content == null)
-        //    {
-        //        return BadRequest("Content not found");
-        //    }
-        //    return Ok(content);
-        //}
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Content>> GetContentById(int id)
+        {
+            //var content = await _context.Contents.FindAsync(id);
+            //if (content == null)
+            //{
+            //    return BadRequest("Content not found");
+            //}
+            //return Ok(content);
+            return Ok(await _contentRepository.GetContentById(id));
+        }
 
         //[HttpPost]
         //public async Task<ActionResult<List<Content>>> PostContent(Content content)
