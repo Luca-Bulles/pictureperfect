@@ -42,7 +42,23 @@ namespace ContentAPI.Repositories
 
         async Task<List<Content>> IContentRepository.UpdateContent(Content request)
         {
-            throw new NotImplementedException();
+            var dbContent = await _context.Contents.FindAsync(request.ContentId);
+            if(dbContent != null)
+            {
+                dbContent.Category = request.Category;
+                dbContent.Name = request.Name;
+                dbContent.Subject = request.Subject;
+                dbContent.Description = request.Description;
+                dbContent.Cast = request.Cast;
+                dbContent.Duration = request.Duration;
+                dbContent.Year = request.Year;
+
+                await _context.SaveChangesAsync();
+
+                return await _context.Contents.ToListAsync();
+            }
+
+            return null;
         }
     }
 }
