@@ -5,29 +5,64 @@ namespace ReviewAPI.Repositories
 {
     public class ReviewRepository : IReviewRepository
     {
-        Task<List<Review>> IReviewRepository.AddReview(Review review)
+        private readonly DataContext _context;
+
+        public ReviewRepository(DataContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        Task<List<Review>> IReviewRepository.DeleteReview(int id)
+        async Task<List<Review>> IReviewRepository.AddReview(Review review)
         {
-            throw new NotImplementedException();
+            _context.Reviews.Add(review);
+            await _context.SaveChangesAsync();
+
+            return await _context.Reviews.ToListAsync();
         }
 
-        Task<List<Review>> IReviewRepository.GetAllReview()
+        async Task<List<Review>> IReviewRepository.DeleteReview(int id)
         {
-            throw new NotImplementedException();
+            var dbReview = await _context.Reviews.FindAsync(id);
+            if(dbReview != null)
+            {
+                _context.Reviews.Remove(dbReview);
+                await _context.SaveChangesAsync();
+
+                return _context.Reviews.ToList();
+            }
+
+            return null;
         }
 
-        Task<Review> IReviewRepository.GetReviewById(int id)
+        async Task<List<Review>> IReviewRepository.GetAllReview()
         {
-            throw new NotImplementedException();
+            return await _context.Reviews.ToListAsync();
         }
 
-        Task<List<Review>> IReviewRepository.UpdateReview(Review request)
+        async Task<Review> IReviewRepository.GetReviewById(int id)
         {
-            throw new NotImplementedException();
+            var review = await _context.Reviews.FindAsync(id);
+            if (review != null)
+            {
+                return review;
+            }
+            return null;
+        }
+
+        async Task<List<Review>> IReviewRepository.UpdateReview(Review request)
+        {
+            var dbReview = await _context.Reviews.FindAsync(request.ReviewId);
+            if (dbReview != null)
+            {
+                dbReview.ReviewContent = request.ReviewContent;
+                dbReview.ReviewTitle = request.ReviewTitle;
+                dbReview.Reported = request.Reported;
+
+                await _context.SaveChangesAsync();
+
+                return await _context.Reviews.ToListAsync();
+            }
+            return null;
         }
     }
 }
