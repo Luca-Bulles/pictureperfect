@@ -21,7 +21,16 @@ namespace ContentAPI.Repositories
 
         async Task<List<Content>> IContentRepository.DeleteContent(int id)
         {
-            throw new NotImplementedException();
+            var dbContent = await _context.Contents.FindAsync(id);
+            if (dbContent != null)
+            {
+                _context.Contents.Remove(dbContent);
+                await _context.SaveChangesAsync();
+
+                return _context.Contents.ToList();
+            }
+
+            return null;
         }
 
         async Task<List<Content>> IContentRepository.GetAllContent()
