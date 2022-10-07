@@ -1,11 +1,15 @@
 global using ReviewAPI.Data;
 global using Microsoft.EntityFrameworkCore;
+using ReviewAPI.Interfaces;
+using ReviewAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+//Use SQL Server Database
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
