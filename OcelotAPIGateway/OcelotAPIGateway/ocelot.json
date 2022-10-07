@@ -10,7 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/ocelot/content",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put"]
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
     },
     {
       "DownstreamPathTemplate": "/api/content{id}",
@@ -22,7 +22,31 @@
         }
       ],
       "UpstreamPathTemplate": "/ocelot/content{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete"]
+      "UpstreamHttpMethod": [ "Get", "Delete" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/review",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7289
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/review",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/review{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7289
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/review{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ]
     }
   ],
   "GlobalConfiguration": {}
