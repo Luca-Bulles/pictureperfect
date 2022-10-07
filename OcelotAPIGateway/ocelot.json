@@ -1,0 +1,15 @@
+{
+  "GlobalConfiguration": {},
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/content",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/content",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [{
+          "Host": "localhost",
+          "Port":  "7213"
+        }]
+    }
+  ]
+}

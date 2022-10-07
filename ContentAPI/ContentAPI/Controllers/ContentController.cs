@@ -1,4 +1,5 @@
-﻿using ContentAPI.Models;
+﻿using ContentAPI.Interfaces;
+using ContentAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,74 +9,57 @@ namespace ContentAPI.Controllers
     [ApiController]
     public class ContentController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IContentRepository _contentRepository;
 
-        public ContentController(DataContext context)
+        public ContentController(IContentRepository contentRepository)
         {
-            _context = context;
+            _contentRepository = contentRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Content>>> GetAllContent()
         {
-            return Ok(await _context.Contents.ToListAsync());
+            return Ok(await _contentRepository.GetAllContent());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Content>> GetContentById(int id)
         {
-            var content = await _context.Contents.FindAsync(id);
-            if (content == null)
+            var response = await _contentRepository.GetContentById(id);
+            if (response != null)
             {
-                return BadRequest("Content not found");
+                return Ok(response);
             }
-            return Ok(content);
+            return NotFound("Content not found with given id");
         }
 
         [HttpPost]
         public async Task<ActionResult<List<Content>>> PostContent(Content content)
         {
-            _context.Contents.Add(content);
-            await _context.SaveChangesAsync();
-
-            return Ok(await _context.Contents.ToListAsync());
+            return Ok(await _contentRepository.AddContent(content));
         }
 
         [HttpPut]
         public async Task<ActionResult<List<Content>>> UpdateContent(Content request)
         {
-            var dbContent = await _context.Contents.FindAsync(request.ContentId);
-            if (dbContent == null)
+            var response = await _contentRepository.UpdateContent(request);
+            if (response != null)
             {
-                return BadRequest("Content not found.");
+                return Ok(response);
             }
-
-            dbContent.Category = request.Category;
-            dbContent.Name = request.Name;
-            dbContent.Subject = request.Subject;
-            dbContent.Description = request.Description;
-            dbContent.Cast = request.Cast;
-            dbContent.Duration = request.Duration;
-            dbContent.Year = request.Year;
-
-            await _context.SaveChangesAsync();
-
-            return Ok(await _context.Contents.ToListAsync());
+            return BadRequest("Content not found with given id");
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<Content>>> DeleteContent(int id)
         {
-            var dbContent = await _context.Contents.FindAsync(id);
-            if (dbContent == null)
+            var Response = await _contentRepository.DeleteContent(id);
+            if(Response != null)
             {
-                return BadRequest("Content not found.");
+                return Ok(Response);
             }
 
-            _context.Contents.Remove(dbContent);
-            await _context.SaveChangesAsync();
-
-            return Ok(await _context.Contents.ToListAsync());
+            return NotFound("Content not found with given id");
         }
     }
 }

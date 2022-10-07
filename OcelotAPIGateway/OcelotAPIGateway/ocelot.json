@@ -1,0 +1,29 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/content",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/content",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put"]
+    },
+    {
+      "DownstreamPathTemplate": "/api/content{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7213
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/content{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete"]
+    }
+  ],
+  "GlobalConfiguration": {}
+}

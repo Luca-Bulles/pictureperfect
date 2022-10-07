@@ -1,23 +1,17 @@
-global using ContentAPI.Data;
-global using Microsoft.EntityFrameworkCore;
-using ContentAPI.Interfaces;
-using ContentAPI.Repositories;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration.AddJsonFile("ocelot.json");
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-//Use SQL Server Database
-builder.Services.AddScoped<IContentRepository, ContentRepository>();
-builder.Services.AddDbContext<DataContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddOcelot();
 
 var app = builder.Build();
 
@@ -29,6 +23,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseOcelot().Wait();
 
 app.UseAuthorization();
 
