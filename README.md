@@ -1,2 +1,2 @@
 # pictureperfect
-Semester 6 software engineering project with Microservices architecture. .NET 6 APIs, API Gateway and a message broker. Frontend project is created with Javascript
+Semester 6 software engineering project with Microservices architecture. The microservices are created with .NET 6 and i have used an ORM (Entity Framework) to handle all data reqyests to the distributed MySQL databases. The API Gateway is used to handle all requests from the Web application. The API Gateway is created with .NET 6 and the frontend project is created with JavaScript, CSS and HTML. For communication between microservices, i have implemented a Messagebroker with RabbitMQ.
