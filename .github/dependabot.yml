@@ -9,3 +9,11 @@ updates:
     directory: "./ContentAPI" # Location of package manifests
     schedule:
       interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "./ReviewAPI" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "./OcelotAPIGateway" # Location of package manifests
+    schedule:
+      interval: "weekly"
