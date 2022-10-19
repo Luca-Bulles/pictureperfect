@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 //Use SQL Server Database
-builder.Services.AddScoped<IContentRepository, ContentRepository>();
+builder.Services.AddScoped<IContentRepository, ContentRepository>();//Register repository and interface
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
