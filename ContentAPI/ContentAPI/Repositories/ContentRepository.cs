@@ -5,6 +5,7 @@ namespace ContentAPI.Repositories
 {
     public class ContentRepository : IContentRepository
     {
+        //Dependency Injection
         private readonly DataContext _context;
 
         public ContentRepository(DataContext context)
