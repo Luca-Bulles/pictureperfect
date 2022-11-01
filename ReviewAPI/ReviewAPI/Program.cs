@@ -2,6 +2,7 @@ global using ReviewAPI.Data;
 global using Microsoft.EntityFrameworkCore;
 using ReviewAPI.Interfaces;
 using ReviewAPI.Repositories;
+using ReviewAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
 //Use SQL Server Database
 builder.Services.AddDbContext<DataContext>(options =>
 {
