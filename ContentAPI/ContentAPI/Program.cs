@@ -2,6 +2,7 @@ global using ContentAPI.Data;
 global using Microsoft.EntityFrameworkCore;
 using ContentAPI.Interfaces;
 using ContentAPI.Repositories;
+using ContentAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 //Use SQL Server Database
 builder.Services.AddScoped<IContentRepository, ContentRepository>();
+builder.Services.AddScoped<IContentService, ContentService>();
 builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

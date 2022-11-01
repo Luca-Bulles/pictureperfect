@@ -9,23 +9,23 @@ namespace ContentAPI.Controllers
     [ApiController]
     public class ContentController : ControllerBase
     {
-        private readonly IContentRepository _contentRepository;
+        private readonly IContentService _ContentService;
 
-        public ContentController(IContentRepository contentRepository)
+        public ContentController(IContentService contentService)
         {
-            _contentRepository = contentRepository;
+            _ContentService = contentService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Content>>> GetAllContent()
         {
-            return Ok(await _contentRepository.GetAllContent());
+            return Ok(await _ContentService.GetAllContent());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Content>> GetContentById(int id)
         {
-            var response = await _contentRepository.GetContentById(id);
+            var response = await _ContentService.GetContentById(id);
             if (response != null)
             {
                 return Ok(response);
@@ -36,13 +36,13 @@ namespace ContentAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Content>>> PostContent(Content content)
         {
-            return Ok(await _contentRepository.AddContent(content));
+            return Ok(await _ContentService.AddContent(content));
         }
 
         [HttpPut]
         public async Task<ActionResult<List<Content>>> UpdateContent(Content request)
         {
-            var response = await _contentRepository.UpdateContent(request);
+            var response = await _ContentService.UpdateContent(request);
             if (response != null)
             {
                 return Ok(response);
@@ -53,7 +53,7 @@ namespace ContentAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<Content>>> DeleteContent(int id)
         {
-            var Response = await _contentRepository.DeleteContent(id);
+            var Response = await _ContentService.DeleteContent(id);
             if(Response != null)
             {
                 return Ok(Response);

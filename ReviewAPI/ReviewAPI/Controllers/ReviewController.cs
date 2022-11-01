@@ -8,23 +8,23 @@ namespace ReviewAPI.Controllers
     [ApiController]
     public class ReviewController : ControllerBase
     {
-        private readonly IReviewRepository _reviewRepository;
+        private readonly IReviewService _reviewService;
 
-        public ReviewController(IReviewRepository reviewRepository)
+        public ReviewController(IReviewService reviewService)
         {
-            _reviewRepository = reviewRepository;
+            _reviewService = reviewService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Review>>> GetAllReviews()
         {
-            return Ok(await _reviewRepository.GetAllReview());
+            return Ok(await _reviewService.GetAllReview());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Review>> GetReviewById(int id)
         {
-            var response = await _reviewRepository.GetReviewById(id);
+            var response = await _reviewService.GetReviewById(id);
             if (response != null)
             {
                 return Ok(response);
@@ -35,13 +35,13 @@ namespace ReviewAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Review>>> PostReview(Review review)
         {
-            return Ok(await _reviewRepository.AddReview(review));
+            return Ok(await _reviewService.AddReview(review));
         }
 
         [HttpPut]
         public async Task<ActionResult<List<Review>>> UpdateReview(Review request)
         {
-            var response = await _reviewRepository.UpdateReview(request);
+            var response = await _reviewService.UpdateReview(request);
             if (response != null)
             {
                 return Ok(response);
@@ -52,7 +52,7 @@ namespace ReviewAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<Review>>> DeleteReview(int id)
         {
-            var response = await _reviewRepository.DeleteReview(id);
+            var response = await _reviewService.DeleteReview(id);
             if (response != null)
             {
                 return Ok(response);
