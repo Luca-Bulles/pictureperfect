@@ -15,8 +15,8 @@ Semester 6 software engineering project with Microservices architecture. The mic
 <table align="center" class="no-border" >
   <tr>
     <td><img src="https://github.com/Luca-Bulles/pictureperfect/actions/workflows/dotnetReviewAPI.yml/badge.svg" alt="C# Review MS health"/></td>
-    <td><img src="https://https://github.com/Luca-Bulles/pictureperfect/actions/workflows/dotnet.yml/badge.svg" alt="C# Content MS health"/></td>
-    <td><img src="https://github.com/Luca-Bulles/pictureperfect/actions/workflows/dotnetocelot.yml/badge.svg" alt="C# Ocelot API Gateway health"/></td>
+    <td><img src="https://github.com/Luca-Bulles/pictureperfect/actions/workflows/dotnet.yml/badge.svg" alt="C# Content MS health"/></td>
+    <td><img src="https://github.com/Luca-Bulles/pictureperfect/actions/workflows//dotnetocelot.yml/badge.svg" alt="Ocelot API Gateway"/></td>
   </tr>
 </table>
 
