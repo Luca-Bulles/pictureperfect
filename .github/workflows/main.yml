@@ -21,8 +21,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          working-directory: ./ContentAPI/ContentAPI/
           context: .
-          file: /Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/clockbox:latest
