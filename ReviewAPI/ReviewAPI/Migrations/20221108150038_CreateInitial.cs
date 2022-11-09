@@ -4,8 +4,10 @@
 
 namespace ReviewAPI.Migrations
 {
+    /// <inheritdoc />
     public partial class CreateInitial : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -24,6 +26,7 @@ namespace ReviewAPI.Migrations
                 });
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

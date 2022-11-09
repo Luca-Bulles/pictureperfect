@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  reviewapi:
+    image: ${DOCKER_REGISTRY-}reviewapi
+    build:
+      context: .
+      dockerfile: ReviewAPI/Dockerfile
+    ports:
+    - 5001:80
+
+    #SQL Server Database
+  #db:
+  #  container_name: "reviewdb"
+  #  image: mcr.microsoft.com/mssql/server:2022-latest
+  #  ports:
+  #    - "1434:1433"
+  #  environment:
+  #    MSSQL_SA_PASSWORD: "Database!2021"
+  #    ACCEPT_EULA: "Y"
