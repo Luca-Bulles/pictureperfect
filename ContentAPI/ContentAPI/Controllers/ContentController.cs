@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ContentAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]//
     public class ContentController : ControllerBase
     {
         private readonly IContentService _ContentService;
