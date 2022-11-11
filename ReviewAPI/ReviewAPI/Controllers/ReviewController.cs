@@ -5,7 +5,7 @@ using ReviewAPI.Models;
 namespace ReviewAPI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController]//
     public class ReviewController : ControllerBase
     {
         private readonly IReviewService _reviewService;
