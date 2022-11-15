@@ -7,7 +7,7 @@ using ContentAPI.Services;
 using FluentAssertions;
 using Moq;
 
-namespace ContentAPI.Test
+namespace ContentAPI.Test.IntegrationTests
 {
     public class ContentControllerTest
     {
@@ -18,12 +18,11 @@ namespace ContentAPI.Test
         public ContentControllerTest()
         {
             _ifixture = new Fixture();
-            _contentServiceMock= new Mock<IContentService>();
+            _contentServiceMock = new Mock<IContentService>();
             _contentTest = new ContentController(_contentServiceMock.Object);
         }
 
         //Test Get Content By Id 
-
         [Fact]
         public async Task GetContentById()
         {
@@ -39,6 +38,7 @@ namespace ContentAPI.Test
             _contentServiceMock.Verify(x => x.GetContentById(id), Times.Once());
         }
 
+        //Test Get All Content
         [Fact]
         public async Task GetAllContentTest()
         {
@@ -49,7 +49,8 @@ namespace ContentAPI.Test
             Assert.NotNull(result);
             _contentServiceMock.Verify(x => x.GetAllContent(), Times.Once());
         }
-
+        
+        //Test Delete Content
         [Fact]
         public async Task DeleteContentTest()
         {
@@ -62,6 +63,24 @@ namespace ContentAPI.Test
             //Assert
             result.Should().NotBeNull();
             _contentServiceMock.Verify(x => x.DeleteContent(contentId), Times.Once());
+        }
+
+        //Test Update Content
+        [Fact]
+        public async Task UpdateContentTest()
+        {
+            //Arrange
+            var contentId = _ifixture.Create<int>();
+            var newContentId = _ifixture.Create<int>();
+            Content content = new Content();
+
+
+            //Act
+            var result = await _contentTest.UpdateContent(content);
+
+            //Assert
+            result.Should().NotBeNull();
+            _contentServiceMock.Verify(x => x.UpdateContent(content), Times.Once());
         }
     }
 }
