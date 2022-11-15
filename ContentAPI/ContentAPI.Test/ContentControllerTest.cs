@@ -38,5 +38,16 @@ namespace ContentAPI.Test
             result.Should().NotBeNull();
             _contentServiceMock.Verify(x => x.GetContentById(id), Times.Once());
         }
+
+        [Fact]
+        public async Task GetAllContentTest()
+        {
+            //Arrange
+            var result = await _contentTest.GetAllContent().ConfigureAwait(false);
+
+            //Assert
+            Assert.NotNull(result);
+            _contentServiceMock.Verify(x => x.GetAllContent(), Times.Once());
+        }
     }
 }
