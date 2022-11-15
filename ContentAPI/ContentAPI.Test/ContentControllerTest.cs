@@ -49,5 +49,19 @@ namespace ContentAPI.Test
             Assert.NotNull(result);
             _contentServiceMock.Verify(x => x.GetAllContent(), Times.Once());
         }
+
+        [Fact]
+        public async Task DeleteContentTest()
+        {
+            //Arrange
+            var contentId = _ifixture.Create<int>();
+
+            //Act 
+            var result = await _contentTest.DeleteContent(contentId).ConfigureAwait(false);
+
+            //Assert
+            result.Should().NotBeNull();
+            _contentServiceMock.Verify(x => x.DeleteContent(contentId), Times.Once());
+        }
     }
 }
