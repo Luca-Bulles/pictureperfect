@@ -62,5 +62,20 @@ namespace ReviewAPI.Test.IntegrationTests
             result.Should().NotBeNull();
             _reviewServiceMock.Verify(x => x.DeleteReview(reviewId), Times.Once());
         }
+
+        //Test update Review
+        [Fact]
+        public async Task UpdateReview()
+        {
+            //Arrange
+            Review review = new Review(_ifixture.Create<int>(), "Great Content", "Good to watch", "No");
+
+            //Act
+            var result = await _reviewTest.UpdateReview(review).ConfigureAwait(false);
+
+            //Assert
+            result.Should().NotBeNull();
+            _reviewServiceMock.Verify(x => x.UpdateReview(review), Times.Once());
+        }
     }
 }
