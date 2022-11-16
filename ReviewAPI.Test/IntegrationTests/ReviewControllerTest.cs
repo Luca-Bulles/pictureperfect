@@ -1,11 +1,23 @@
+using AutoFixture;
+using Moq;
+using ReviewAPI.Controllers;
+using ReviewAPI.Interfaces;
+
 namespace ReviewAPI.Test.IntegrationTests
 {
-    public class UnitTest1
+    public class ReviewControllerTest
     {
-        [Fact]
-        public void Test1()
-        {
+        private readonly IFixture _ifixture;
+        private readonly Mock<IReviewService> _reviewServiceMock;
+        private readonly ReviewController _reviewTest;
 
+        public ReviewControllerTest()
+        {
+            _ifixture = new Fixture();
+            _reviewServiceMock = new Mock<IReviewService>();
+            _reviewTest = new ReviewController(_reviewServiceMock.Object);
         }
+
+
     }
 }
