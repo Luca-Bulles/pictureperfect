@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewAPI", "ReviewAPI\Revi
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AD512BFE-8A95-45BC-BA4A-A3906C97C1E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReviewAPI.Test", "..\ReviewAPI.Test\ReviewAPI.Test.csproj", "{3DB85B44-7019-4FFD-987F-166221A49FBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AD512BFE-8A95-45BC-BA4A-A3906C97C1E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD512BFE-8A95-45BC-BA4A-A3906C97C1E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD512BFE-8A95-45BC-BA4A-A3906C97C1E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB85B44-7019-4FFD-987F-166221A49FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB85B44-7019-4FFD-987F-166221A49FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB85B44-7019-4FFD-987F-166221A49FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB85B44-7019-4FFD-987F-166221A49FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
