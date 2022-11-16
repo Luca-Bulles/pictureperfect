@@ -35,5 +35,19 @@ namespace ReviewAPI.Test.IntegrationTests
             result.Should().NotBeNull();
             _reviewServiceMock.Verify(x => x.GetReviewById(id), Times.Once());
         }
+
+        //Test Get all Reviews
+        [Fact]
+        public async Task GetAllReviews()
+        {
+            //Arrange
+            var result = await _reviewTest.GetAllReviews().ConfigureAwait(false);
+
+            //Assert
+            Assert.NotNull(result);
+            _reviewServiceMock.Verify(x => x.GetAllReview(), Times.Once());
+        }
+
+
     }
 }
