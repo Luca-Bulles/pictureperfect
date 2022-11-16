@@ -48,6 +48,19 @@ namespace ReviewAPI.Test.IntegrationTests
             _reviewServiceMock.Verify(x => x.GetAllReview(), Times.Once());
         }
 
+        //Test Delete reviews
+        [Fact]
+        public async Task DeleteReview()
+        {
+            //Arrange
+            var reviewId = _ifixture.Create<int>();
 
+            //Act
+            var result = await _reviewTest.DeleteReview(reviewId).ConfigureAwait(false);
+
+            //Assert
+            result.Should().NotBeNull();
+            _reviewServiceMock.Verify(x => x.DeleteReview(reviewId), Times.Once());
+        }
     }
 }
