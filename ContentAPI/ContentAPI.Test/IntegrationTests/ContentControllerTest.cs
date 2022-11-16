@@ -71,7 +71,7 @@ namespace ContentAPI.Test.IntegrationTests
         {
             //Arrange
             Content content = new Content(_ifixture.Create<int>(), "Movies", "After Earth",
-                "Thriller", "Movie about post apocolyptical world", "Will Smith", "128 Minutes", 2015);
+                "Thriller", "Movie about post apocalyptic world", "Will Smith", "128 Minutes", 2015);
 
 
             //Act
@@ -88,7 +88,7 @@ namespace ContentAPI.Test.IntegrationTests
         {
             //Arrange
             Content content = new Content(_ifixture.Create<int>(), "Movies", "After Earth",
-                "Thriller", "Movie about post apocolyptical world", "Will Smith", "128 Minutes", 2015);
+                "Thriller", "Movie about post apocalyptic world", "Will Smith", "128 Minutes", 2015);
 
             //Act
             var result = await _contentTest.PostContent(content);
