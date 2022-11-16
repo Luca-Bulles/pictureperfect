@@ -70,9 +70,8 @@ namespace ContentAPI.Test.IntegrationTests
         public async Task UpdateContentTest()
         {
             //Arrange
-            var contentId = _ifixture.Create<int>();
-            var newContentId = _ifixture.Create<int>();
-            Content content = new Content();
+            Content content = new Content(_ifixture.Create<int>(), "Movies", "After Earth",
+                "Thriller", "Movie about post apocolyptical world", "Will Smith", "128 Minutes", 2015);
 
 
             //Act
@@ -81,6 +80,22 @@ namespace ContentAPI.Test.IntegrationTests
             //Assert
             result.Should().NotBeNull();
             _contentServiceMock.Verify(x => x.UpdateContent(content), Times.Once());
+        }
+
+        //Test Post Content
+        [Fact]
+        public async Task PostContent()
+        {
+            //Arrange
+            Content content = new Content(_ifixture.Create<int>(), "Movies", "After Earth",
+                "Thriller", "Movie about post apocolyptical world", "Will Smith", "128 Minutes", 2015);
+
+            //Act
+            var result = await _contentTest.PostContent(content);
+
+            //Assert
+            result.Should().NotBeNull();
+            _contentServiceMock.Verify(x => x.AddContent(content), Times.Once());
         }
     }
 }
