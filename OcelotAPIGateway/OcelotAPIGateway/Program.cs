@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using OcelotApiGateway.Authentication;
+using OcelotAPIGateway.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
