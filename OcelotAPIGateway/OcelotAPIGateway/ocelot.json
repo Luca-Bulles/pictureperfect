@@ -1,53 +1,42 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/content",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7213
-        }
-      ],
       "UpstreamPathTemplate": "/ocelot/content",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/content{id}",
-      "DownstreamScheme": "https",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamPathTemplate": "/api/content",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": 7213
         }
       ],
-      "UpstreamPathTemplate": "/ocelot/content{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ]
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Admin"
+      }
     },
     {
-      "DownstreamPathTemplate": "/api/review",
-      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/ocelot/content/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamPathTemplate": "/api/content/{id}",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 7289
+          "Port": 7213
         }
       ],
-      "UpstreamPathTemplate": "/ocelot/review",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/review{id}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 7289
-        }
-      ],
-      "UpstreamPathTemplate": "/ocelot/review{id}",
-      "UpstreamHttpMethod": [ "Get", "Delete" ]
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "http$//schemas.microsoft.com/ws/2008/06/identity/claims/role": "Admin"
+      }
     }
-  ],
-  "GlobalConfiguration": {}
+  ]
 }
