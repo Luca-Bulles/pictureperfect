@@ -39,7 +39,7 @@ namespace OcelotAPIGateway.Authentication
                 {
                     ValidateAudience = false,
                     ValidateIssuer = false,
-                    ValidIssuers = new[] { "http://host.docker.internal:2222/realms/Kinoroom" },
+                    ValidIssuers = new[] { "http://localhost:8080/realms/MyRealm" },
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = BuildRsaKey(jwtKey),
                     ValidateLifetime = true
