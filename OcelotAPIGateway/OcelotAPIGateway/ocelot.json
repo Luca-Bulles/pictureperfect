@@ -4,7 +4,7 @@
       "UpstreamPathTemplate": "/ocelot/content",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DownstreamPathTemplate": "/api/content",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -23,7 +23,7 @@
       "UpstreamPathTemplate": "/ocelot/content/{id}",
       "UpstreamHttpMethod": [ "Get", "Delete" ],
       "DownstreamPathTemplate": "/api/content/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
